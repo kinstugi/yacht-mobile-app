@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yachtmob/pages/message_detail_page.dart';
 import 'package:yachtmob/widgets/custom_search_bar.dart';
 
 class MessagesTab extends StatelessWidget {
@@ -17,9 +18,9 @@ class MessagesTab extends StatelessWidget {
               padding: const EdgeInsets.all(18.0),
               child: Column(
                 children: [
-                  _messageTile(),
+                  _messageTile(context),
                   const SizedBox(height: 20),
-                  _messageTile(),
+                  _messageTile(context),
                 ],
               ),
             ),
@@ -50,50 +51,55 @@ class MessagesTab extends StatelessWidget {
     );
   }
 
-  Widget _messageTile() {
-    return Row(
-      children: [
-        Container(
-          height: 60,
-          width: 60,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30),
-            border: Border.all(color: Colors.grey),
-            image: const DecorationImage(
-              image: NetworkImage('https://bit.ly/3fn0GMQ'),
-              fit: BoxFit.cover,
+  Widget _messageTile(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Navigator.of(context).pushNamed(MessageDetailPage.tag);
+      },
+      child: Row(
+        children: [
+          Container(
+            height: 60,
+            width: 60,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              border: Border.all(color: Colors.grey),
+              image: const DecorationImage(
+                image: NetworkImage('https://bit.ly/3fn0GMQ'),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-        const SizedBox(width: 18),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              RichText(
-                text: const TextSpan(
-                  text: 'Mr. Lucy .',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                  children: [
-                    TextSpan(
-                      text: 'Sailboat . Antalya,Turkey',
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: Colors.black87,
-                      ),
+          const SizedBox(width: 18),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                RichText(
+                  text: const TextSpan(
+                    text: 'Mr. Lucy .',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
-                  ],
+                    children: [
+                      TextSpan(
+                        text: 'Sailboat . Antalya,Turkey',
+                        style: TextStyle(
+                          fontSize: 11,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const Text('You: where are the mice and cheese ...'),
-              const Text('Nov 25')
-            ],
-          ),
-        )
-      ],
+                const Text('You: where are the mice and cheese ...'),
+                const Text('Nov 25')
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }

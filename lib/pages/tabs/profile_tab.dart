@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:yachtmob/pages/edit_profile_page.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -89,7 +90,12 @@ class ProfileTab extends StatelessWidget {
                         color: Colors.black,
                       ),
                 ),
-                const Text('Click to view and edit'),
+                InkWell(
+                  child: const Text('Click to view and edit'),
+                  onTap: () {
+                    Navigator.of(context).pushNamed(EditProfilePage.tag);
+                  },
+                ),
               ],
             ),
           ),
