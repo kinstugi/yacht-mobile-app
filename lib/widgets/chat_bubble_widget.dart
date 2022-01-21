@@ -14,12 +14,17 @@ class ChatBubbleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Column(
+      crossAxisAlignment:
+          isMe ? CrossAxisAlignment.end : CrossAxisAlignment.start,
       children: [
         Row(
+          mainAxisAlignment:
+              isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
           children: [
             Container(
+              padding: const EdgeInsets.all(8),
               constraints: BoxConstraints(
-                maxWidth: size.width * 0.6,
+                maxWidth: size.width * 0.55,
                 minWidth: size.width * 0.1,
               ),
               decoration: BoxDecoration(
@@ -30,6 +35,8 @@ class ChatBubbleWidget extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 8),
+        const Text('1:07PM'),
       ],
     );
   }

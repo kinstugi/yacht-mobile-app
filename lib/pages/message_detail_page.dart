@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yachtmob/constants/ui_constants.dart';
+import 'package:yachtmob/widgets/chat_bubble_widget.dart';
 import 'package:yachtmob/widgets/custom_switch_btn_widget.dart';
 
 class MessageDetailPage extends StatelessWidget {
@@ -62,9 +63,21 @@ class MessageDetailPage extends StatelessWidget {
   }
 
   Widget _buildChat() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 18),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: const [
+          ChatBubbleWidget(
+            text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+          ),
+          ChatBubbleWidget(
+            text: 'harum quisquam eius sed odit fugiat iusto fuga praesentium'
+                'optio, eaque rerum! Provident ',
+            isMe: false,
+          ),
+        ],
+      ),
     );
   }
 

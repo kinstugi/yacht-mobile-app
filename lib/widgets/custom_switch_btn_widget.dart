@@ -52,7 +52,7 @@ class _CustomSwitchButtonWidgetState extends State<CustomSwitchButtonWidget> {
             ),
             Row(
               children: [
-                const SizedBox(width: 8),
+                const SizedBox(width: 6),
                 const Icon(Icons.sailing, color: Colors.blue),
                 Flexible(child: Container()),
                 const Icon(Icons.chat_bubble_outline, color: Colors.blue),
