@@ -3,6 +3,7 @@ import 'package:yachtmob/constants/ui_constants.dart';
 import 'package:yachtmob/pages/signup_pages/verification_page.dart';
 import 'package:yachtmob/widgets/custom_nav_btn_for_signup_page.dart';
 import 'package:yachtmob/widgets/custom_title_bar_for_signup_page.dart';
+import 'package:yachtmob/widgets/form_label_widget.dart';
 import 'package:yachtmob/widgets/trailing_widget_for_signup.dart';
 import '../../widgets/custom_appbar_for_signup_page_widget.dart';
 
@@ -56,13 +57,7 @@ class SignUpPagePhoneStep extends StatelessWidget {
     return Form(
       child: Column(
         children: [
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              'Phone Number',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ),
+          const FormLabelWidget(label: 'Phone Number'),
           const SizedBox(height: 5),
           TextFormField(
             keyboardType: TextInputType.phone,

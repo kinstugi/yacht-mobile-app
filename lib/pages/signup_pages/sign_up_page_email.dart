@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yachtmob/constants/ui_constants.dart';
 import 'package:yachtmob/widgets/custom_nav_btn_for_signup_page.dart';
 import 'package:yachtmob/widgets/custom_title_bar_for_signup_page.dart';
+import 'package:yachtmob/widgets/form_label_widget.dart';
 import 'package:yachtmob/widgets/trailing_widget_for_signup.dart';
 import './sign_up_page_password.dart';
 import '../../widgets/custom_appbar_for_signup_page_widget.dart';
@@ -54,16 +55,10 @@ class SignUpPageEmailStep extends StatelessWidget {
   Form _usernameForm(BuildContext context) {
     return Form(
       child: Column(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            child: Text(
-              'Email',
-              style: Theme.of(context).textTheme.headline6,
-            ),
-          ),
-          const SizedBox(height: 5),
-          const TextField(
+        children: const [
+          FormLabelWidget(label: 'Email'),
+          SizedBox(height: 5),
+          TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
               contentPadding: authInputFieldsContentPadding,

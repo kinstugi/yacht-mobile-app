@@ -64,10 +64,13 @@ class SignUpPagePasswordStep extends StatelessWidget {
             child: RichText(
               text: TextSpan(
                 text: 'New Password ',
-                style: Theme.of(context).textTheme.headline6,
+                style: Theme.of(context).textTheme.headline6?.copyWith(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
                 children: const [
                   TextSpan(
-                    text: 'Min 6 charactor ✓',
+                    text: 'Min 6 character ✓',
                     style: TextStyle(
                       color: Colors.black26,
                       fontSize: 13,
