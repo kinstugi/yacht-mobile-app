@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomSwitchButtonWidget extends StatefulWidget {
-  const CustomSwitchButtonWidget({Key? key}) : super(key: key);
+  final VoidCallback onTap;
+  const CustomSwitchButtonWidget({Key? key, required this.onTap})
+      : super(key: key);
 
   @override
   State<CustomSwitchButtonWidget> createState() =>
@@ -24,6 +26,7 @@ class _CustomSwitchButtonWidgetState extends State<CustomSwitchButtonWidget> {
         setState(() {
           _showChat = !_showChat;
         });
+        widget.onTap();
       },
       child: Container(
         height: widgetHeight,

@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:yachtmob/constants/ui_constants.dart';
-import 'package:yachtmob/widgets/chat_bubble_widget.dart';
+import 'package:yachtmob/pages/messages_tab/booking_detail_tab.dart';
+import 'package:yachtmob/pages/messages_tab/chat_tab.dart';
+
 import 'package:yachtmob/widgets/custom_switch_btn_widget.dart';
 
-class MessageDetailPage extends StatelessWidget {
+class MessageDetailPage extends StatefulWidget {
   static const String tag = '/message-details';
   const MessageDetailPage({Key? key}) : super(key: key);
+
+  @override
+  State<MessageDetailPage> createState() => _MessageDetailPageState();
+}
+
+class _MessageDetailPageState extends State<MessageDetailPage> {
+  bool _showChats = true;
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +25,14 @@ class MessageDetailPage extends StatelessWidget {
             children: [
               _buildAppBar(),
               const Divider(thickness: 1.1),
-              Expanded(child: _buildChat()),
-              const Divider(thickness: 1.1),
-              _buildMessageInputWidget(),
+              Expanded(
+                child: Stack(
+                  children: [
+                    BookingDetailTab(isPageShowing: !_showChats),
+                    ChatTab(isPageShowing: _showChats),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
@@ -45,7 +58,13 @@ class MessageDetailPage extends StatelessWidget {
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
               Flexible(child: Container()),
-              const CustomSwitchButtonWidget()
+              CustomSwitchButtonWidget(
+                onTap: () {
+                  setState(() {
+                    _showChats = !_showChats;
+                  });
+                },
+              )
             ],
           ),
           const SizedBox(height: 8),
@@ -58,59 +77,6 @@ class MessageDetailPage extends StatelessWidget {
             ),
           )
         ],
-      ),
-    );
-  }
-
-  Widget _buildChat() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: const [
-          ChatBubbleWidget(
-            text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-          ),
-          ChatBubbleWidget(
-            text: 'harum quisquam eius sed odit fugiat iusto fuga praesentium'
-                'optio, eaque rerum! Provident ',
-            isMe: false,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildMessageInputWidget() {
-    return Form(
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 5),
-        child: Row(
-          children: [
-            Expanded(
-              child: TextFormField(
-                decoration: InputDecoration(
-                  contentPadding: authInputFieldsContentPadding.copyWith(
-                    left: 20,
-                    bottom: 5,
-                  ),
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              padding: const EdgeInsets.all(0),
-              icon: const Icon(
-                Icons.send,
-                size: 35,
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

@@ -4,10 +4,15 @@ class FormLabelWidget extends StatelessWidget {
   final bool onTop;
   final String label;
   final double fontSize;
+  final Color color;
 
-  const FormLabelWidget(
-      {Key? key, required this.label, this.onTop = true, this.fontSize = 16})
-      : super(key: key);
+  const FormLabelWidget({
+    Key? key,
+    required this.label,
+    this.onTop = true,
+    this.fontSize = 16,
+    this.color = Colors.black,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +24,7 @@ class FormLabelWidget extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: fontSize,
+                color: color,
               ),
             ),
           )
