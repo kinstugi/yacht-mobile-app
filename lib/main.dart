@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         MessageDetailPage.tag: (ctx) => const MessageDetailPage(),
         EditProfilePage.tag: (ctx) => const EditProfilePage(),
         ChangePasswordPage.tag: (ctx) => const ChangePasswordPage(),
-        SailingCVPage.tag: (ctx) => const SailingCVPage(),
+        SailingCVPage.tag: (ctx) => const SailingCVPage()
       },
     );
   }

@@ -12,7 +12,10 @@ class MessagesTab extends StatelessWidget {
         children: [
           _appBar(context),
           const Divider(thickness: 1),
-          const CustomSearchBar(hintText: 'Search'),
+          CustomSearchBar(
+            hintText: 'Search',
+            onTap: () {},
+          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(18.0),
