@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../widgets/root_page_bottom_navbar.dart';
-import './tabs/search_tab.dart';
-import './tabs/profile_tab.dart';
-import './tabs/messages_tab.dart';
-import './tabs/favorites_tab.dart';
+import './main_tabs/search_tab.dart';
+import './main_tabs/profile_tab.dart';
+import './main_tabs/messages_tab.dart';
+import './main_tabs/favorites_tab.dart';
 
 final currentRootPageIndex = StateProvider((ref) => 0);
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:yachtmob/pages/filter_search_page.dart';
 
 import 'custom_search_bar.dart';
 
@@ -41,17 +42,20 @@ class CustomSearchAndFilterAppBar extends StatelessWidget {
               _buildIconButton(
                 icon: FontAwesomeIcons.filter,
                 label: 'Filter',
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).pushNamed(FilterSearchPage.tag);
+                },
               ),
               const SizedBox(width: 18),
               _buildIconButton(
                 icon: FontAwesomeIcons.sortAmountUp,
                 label: 'Sort',
                 onTap: () {
-                  showDialog(
+                  showModalBottomSheet(
+                    isDismissible: false,
                     context: context,
                     builder: (ctx) {
-                      return _buildSortingBottomSheet();
+                      return _buildSortingBottomSheet(context);
                     },
                   );
                 },
@@ -63,43 +67,51 @@ class CustomSearchAndFilterAppBar extends StatelessWidget {
     );
   }
 
-  Widget _buildSortingBottomSheet() {
+  Widget _buildSortingBottomSheet(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(
-          height: 200,
-          width: double.infinity,
-          child: Card(
-            color: Colors.white,
-            child: Column(
-              children: [
-                ListTile(
-                  title: const Text(
-                    'Best seller',
-                    textAlign: TextAlign.center,
-                  ),
-                  onTap: () {},
-                  selected: true,
-                ),
-                ListTile(
-                  title: const Text(
-                    'Most Rated',
-                    textAlign: TextAlign.center,
-                  ),
-                  onTap: () {},
-                ),
-                ListTile(
-                  title: const Text(
-                    'Most favorite',
-                    textAlign: TextAlign.center,
-                  ),
-                  onTap: () {},
-                ),
-              ],
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(Icons.arrow_back, color: Colors.blue),
             ),
+            const Text(
+              'Sort',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            TextButton(onPressed: () {}, child: const Text('Select'))
+          ],
+        ),
+        ListTile(
+          title: const Text(
+            'Best seller',
+            textAlign: TextAlign.center,
           ),
-        )
+          onTap: () {},
+          selected: true,
+        ),
+        ListTile(
+          title: const Text(
+            'Most Rated',
+            textAlign: TextAlign.center,
+          ),
+          onTap: () {},
+        ),
+        ListTile(
+          title: const Text(
+            'Most favorite',
+            textAlign: TextAlign.center,
+          ),
+          onTap: () {},
+        ),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:yachtmob/pages/edit_profile_page.dart';
+import 'package:yachtmob/pages/listing_page.dart';
 
 class ProfileTab extends StatelessWidget {
   const ProfileTab({Key? key}) : super(key: key);
@@ -18,19 +19,40 @@ class ProfileTab extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 18.8),
                 child: Column(
                   children: [
-                    _menuTile(Icons.chat, 'Messages'),
+                    _menuTile(icon: Icons.chat, text: 'Messages', onTap: () {}),
                     const Divider(height: 5, thickness: 1),
-                    _menuTile(Icons.calendar_today_outlined, 'Bookings'),
+                    _menuTile(
+                      icon: Icons.calendar_today_outlined,
+                      text: 'Bookings',
+                      onTap: () {},
+                    ),
                     const Divider(height: 5, thickness: 1),
-                    _menuTile(Icons.favorite_border_outlined, 'Favorites'),
+                    _menuTile(
+                      icon: Icons.favorite_border_outlined,
+                      text: 'Favorites',
+                      onTap: () {},
+                    ),
                     const Divider(height: 5, thickness: 1),
-                    _menuTile(Icons.sailing, 'Listings'),
+                    _menuTile(
+                      icon: Icons.sailing,
+                      text: 'Listings',
+                      onTap: () =>
+                          Navigator.of(context).pushNamed(ListingsPage.tag),
+                    ),
                     const Divider(height: 5, thickness: 1),
-                    _menuTile(Icons.settings, 'App Settings'),
+                    _menuTile(
+                      icon: Icons.settings,
+                      text: 'App Settings',
+                      onTap: () {},
+                    ),
                     const Divider(height: 5, thickness: 1),
-                    _menuTile(Icons.phone_in_talk_outlined, 'Contact Us'),
+                    _menuTile(
+                        icon: Icons.phone_in_talk_outlined,
+                        text: 'Contact Us',
+                        onTap: () {}),
                     const Divider(height: 5, thickness: 1),
-                    _menuTile(Icons.logout, 'Log out'),
+                    _menuTile(
+                        icon: Icons.logout, text: 'Log out', onTap: () {}),
                   ],
                 ),
               ),
@@ -41,7 +63,11 @@ class ProfileTab extends StatelessWidget {
     );
   }
 
-  ListTile _menuTile(IconData icon, String text) {
+  ListTile _menuTile({
+    required IconData icon,
+    required String text,
+    required VoidCallback onTap,
+  }) {
     return ListTile(
       leading: Icon(
         icon,
@@ -54,7 +80,7 @@ class ProfileTab extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {},
+      onTap: onTap,
     );
   }
 

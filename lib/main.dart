@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:yachtmob/pages/change_password_page.dart';
 import 'package:yachtmob/pages/edit_profile_page.dart';
+import 'package:yachtmob/pages/listing_page.dart';
 import 'package:yachtmob/pages/message_detail_page.dart';
 import 'package:yachtmob/pages/sailing_cv_page.dart';
 import 'package:yachtmob/pages/signup_pages/sign_up_page_phone.dart';
@@ -12,6 +13,7 @@ import './pages/signup_pages/sign_up_page_email.dart';
 import './pages/signup_pages/sign_up_page_password.dart';
 import './pages/login_page.dart';
 import './pages/signup_pages/verification_page.dart';
+import './pages/filter_search_page.dart';
 import 'pages/root_page.dart';
 
 void main() {
@@ -41,7 +43,9 @@ class MyApp extends StatelessWidget {
         MessageDetailPage.tag: (ctx) => const MessageDetailPage(),
         EditProfilePage.tag: (ctx) => const EditProfilePage(),
         ChangePasswordPage.tag: (ctx) => const ChangePasswordPage(),
-        SailingCVPage.tag: (ctx) => const SailingCVPage()
+        SailingCVPage.tag: (ctx) => const SailingCVPage(),
+        FilterSearchPage.tag: (ctx) => const FilterSearchPage(),
+        ListingsPage.tag: (ctx) => const ListingsPage(),
       },
     );
   }
